@@ -1,0 +1,30 @@
+{
+  "name": "dojusik",
+  "version": "1.0.0",
+  "description": "모의투자 웹 서비스입니다.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.2.3",
+    "eslint": "^8.50.0",
+    "eslint-config-next": "^13.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.0"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx}": ["eslint --fix", "git add"],
+    "**/*.{js,jsx}": ["eslint --fix", "git add"],
+    "**/*.{json,md}": ["prettier --write", "git add"]
+  }
+}
