@@ -1,4 +1,4 @@
-package com.example.dojusik.entity.auth;
+package com.example.dojusik.auth.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Table(name="certification")
 public class CertificationEntity {
     @Id
-    private String userId;
+    private int id;
     private String email;
     private String certificationNUmber;
 }

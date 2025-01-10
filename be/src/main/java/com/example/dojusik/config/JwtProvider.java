@@ -19,13 +19,13 @@ public class JwtProvider {
     @Value("${secret-key}")
     private String secretkey;
 
-    public String create(String userId){
+    public String create(String accId){
     Date expiredDate = Date.from(Instant.now().plus(24, ChronoUnit.HOURS));//24시간설정
     Key key = Keys.hmacShaKeyFor(secretkey.getBytes(StandardCharsets.UTF_8));
 
         String jwt = Jwts.builder()
-                .signWith(SignatureAlgorithm.HS256,key) //TODO: 키생성방법 확인
-                .setSubject(userId).setIssuedAt(new Date()).setExpiration(expiredDate)
+                .signWith(key, SignatureAlgorithm.HS256)//TODO: 키생성방법 확인
+                .setSubject(accId).setIssuedAt(new Date()).setExpiration(expiredDate)
                 .compact();
         return jwt;
     }

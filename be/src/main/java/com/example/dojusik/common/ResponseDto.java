@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 @Getter
-@AllArgsConstructor
+//@AllArgsConstructor
 public class ResponseDto {
     private HttpStatus status;
     private String message;
@@ -43,4 +43,9 @@ public class ResponseDto {
 //  "status": internal server error,
 //  "message": "서버연결실패",
 //}
+    // 자주 쓰는 에러 만들어 두기
+    public static ResponseEntity<ResponseDto> serverError() {
+        ResponseDto responseBody = new ResponseDto(HttpStatus.INTERNAL_SERVER_ERROR,"서버 에러");
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(responseBody);
+    }
 }
