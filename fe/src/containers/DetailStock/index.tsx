@@ -1,5 +1,9 @@
-import DetailChart from '@/containers/DetailStock/DetailChart'
+import DetailChart from '@containers/DetailStock/DetailChart'
 
-return (
-    <DetailChart/>
-)
+export default function DetailStock() {
+    return (
+        <div>
+          <DetailChart/>
+        </div>
+    )
+}
