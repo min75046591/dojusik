@@ -1,5 +1,6 @@
 package com.example.dojusik.auth.controller;
 
+import com.example.dojusik.auth.dto.request.EmailCertificationRequestDto;
 import com.example.dojusik.auth.dto.request.LoginRequestDto;
 import com.example.dojusik.auth.dto.request.SignupRequestDto;
 import com.example.dojusik.auth.service.AuthService;
@@ -35,4 +36,11 @@ public class AuthController {
         return response;
     }
 
+    @PostMapping("email-certification")
+    public ResponseEntity<ResponseDto> emailCertification (
+            @RequestBody @Valid EmailCertificationRequestDto requestBody
+    ){
+        ResponseEntity<ResponseDto> response = authService.emailCertification(requestBody);
+        return response;
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.dojusik.config;
 
+import com.example.dojusik.auth.entity.UserEntity;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -19,9 +20,9 @@ public class JwtProvider {
     @Value("${secret-key}")
     private String secretkey;
 
-    public String create(String accId){
-    Date expiredDate = Date.from(Instant.now().plus(24, ChronoUnit.HOURS));//24시간설정
-    Key key = Keys.hmacShaKeyFor(secretkey.getBytes(StandardCharsets.UTF_8));
+    public String create(String accId) {
+        Date expiredDate = Date.from(Instant.now().plus(24, ChronoUnit.HOURS));//24시간설정
+        Key key = Keys.hmacShaKeyFor(secretkey.getBytes(StandardCharsets.UTF_8));
 
         String jwt = Jwts.builder()
                 .signWith(key, SignatureAlgorithm.HS256)//TODO: 키생성방법 확인
@@ -30,21 +31,19 @@ public class JwtProvider {
         return jwt;
     }
 
-    public String validate (String jwt){
-        String subject = null;
+    public String validate(String jwt) {
         Key key = Keys.hmacShaKeyFor(secretkey.getBytes(StandardCharsets.UTF_8));
-        try{
-            subject = Jwts.parserBuilder()
+        try {
+            Claims claims = Jwts.parserBuilder()
                     .setSigningKey(key)
                     .build()
                     .parseClaimsJws(jwt)
-                    .getBody()
-                    .getSubject();
+                    .getBody();
 
-        } catch(Exception e){
-            e.printStackTrace();
+            return claims.getSubject(); // accId를 반환
+        } catch (Exception e) {
+            System.err.println("JWT validation error: " + e.getMessage());
             return null;
         }
-        return subject;
     }
 }

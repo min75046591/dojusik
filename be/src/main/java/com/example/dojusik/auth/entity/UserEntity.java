@@ -1,5 +1,7 @@
 package com.example.dojusik.auth.entity;
 
+import com.example.dojusik.assets.dto.request.AssetsRechargeRequestDto;
+import com.example.dojusik.assets.dto.request.AssetsWithdrawRequestDto;
 import com.example.dojusik.auth.dto.request.SignupRequestDto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -47,6 +49,15 @@ public class UserEntity {
         public UserEntity(SignupRequestDto dto){
                 this.accId = dto.getAccId();
                 this.accPassword = dto.getAccPassword();
+        }
+
+
+        public void recharge(long cash) {
+                this.cash = this.cash + cash;
+        }
+
+        public void withdraw(long cash) {
+                this.cash = this.cash - cash;
         }
 }
 

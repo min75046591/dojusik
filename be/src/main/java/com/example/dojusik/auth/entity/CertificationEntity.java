@@ -1,8 +1,6 @@
 package com.example.dojusik.auth.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,8 +11,13 @@ import lombok.NoArgsConstructor;
 @Entity(name="certification")
 @Table(name="certification")
 public class CertificationEntity {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String email;
-    private String certificationNUmber;
+    private String certificationNumber;
+
+    public CertificationEntity(String email, String certificationNumber) {
+        this.email = email;
+        this.certificationNumber = certificationNumber;
+    }
 }
