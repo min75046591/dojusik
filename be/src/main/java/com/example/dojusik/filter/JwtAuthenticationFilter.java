@@ -2,7 +2,7 @@ package com.example.dojusik.filter;
 
 import com.example.dojusik.config.JwtProvider;
 import com.example.dojusik.api.auth.entity.UserEntity;
-import com.example.dojusik.api.auth.respository.UserRepository;
+import com.example.dojusik.api.auth.repository.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

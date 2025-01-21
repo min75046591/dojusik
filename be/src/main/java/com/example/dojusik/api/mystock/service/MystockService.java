@@ -8,4 +8,6 @@ import org.springframework.http.ResponseEntity;
 public interface MystockService {
     ResponseEntity<ResponseDto> getMyStock(UserEntity user);
     ResponseEntity<ResponseDto> sellStock(UserEntity user, MystockSellRequestDto dto);
+    ResponseEntity<ResponseDto> getLikeStocks(UserEntity user);
+    ResponseEntity<ResponseDto> setLikeStock(UserEntity user, String ticker);
 }

@@ -1,4 +1,4 @@
-package com.example.dojusik.api.auth.respository;
+package com.example.dojusik.api.auth.repository;
 
 import com.example.dojusik.api.auth.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

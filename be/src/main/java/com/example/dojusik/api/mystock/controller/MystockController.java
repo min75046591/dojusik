@@ -35,4 +35,23 @@ public class MystockController {
         return response;
     }
 
+    // 관심 주식 조회
+    @GetMapping("/likeStock")
+    public ResponseEntity<ResponseDto> getLikeStocks(
+            @AuthenticationPrincipal UserEntity user
+    ){
+        ResponseEntity<ResponseDto> response = mystockService.getLikeStocks(user);
+        return response;
+    }
+
+    // 관심 주식 설정 / 취소
+    @PostMapping("likeStock/post")
+    public ResponseEntity<ResponseDto> setLikeStock(
+            @AuthenticationPrincipal UserEntity user,
+            @RequestParam String ticker
+    ){
+        ResponseEntity<ResponseDto> response = mystockService.setLikeStock(user,ticker);
+        return response;
+    }
+
 }
