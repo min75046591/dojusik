@@ -1,19 +1,17 @@
-package com.example.dojusik.auth.service;
+package com.example.dojusik.api.auth.service;
 
-import com.example.dojusik.auth.dto.request.EmailCertificationRequestDto;
-import com.example.dojusik.auth.dto.request.LoginRequestDto;
-import com.example.dojusik.auth.dto.request.SignupRequestDto;
-import com.example.dojusik.auth.entity.CertificationEntity;
-import com.example.dojusik.auth.entity.UserEntity;
-import com.example.dojusik.auth.respository.CertificationRepository;
-import com.example.dojusik.auth.respository.UserRepository;
+import com.example.dojusik.api.auth.dto.request.EmailCertificationRequestDto;
+import com.example.dojusik.api.auth.dto.request.LoginRequestDto;
+import com.example.dojusik.api.auth.dto.request.SignupRequestDto;
+import com.example.dojusik.api.auth.entity.CertificationEntity;
+import com.example.dojusik.api.auth.entity.UserEntity;
+import com.example.dojusik.api.auth.respository.CertificationRepository;
+import com.example.dojusik.api.auth.respository.UserRepository;
 import com.example.dojusik.common.CertificationNumber;
 import com.example.dojusik.common.ResponseDto;
-import com.example.dojusik.config.CustomUser;
 import com.example.dojusik.config.EmailProvider;
 import com.example.dojusik.config.JwtProvider;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

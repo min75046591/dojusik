@@ -1,6 +1,6 @@
 package com.example.dojusik.config;
 
-import com.example.dojusik.auth.entity.UserEntity;
+import com.example.dojusik.api.auth.entity.UserEntity;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

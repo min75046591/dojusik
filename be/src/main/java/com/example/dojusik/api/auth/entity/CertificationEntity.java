@@ -1,4 +1,4 @@
-package com.example.dojusik.auth.entity;
+package com.example.dojusik.api.auth.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
