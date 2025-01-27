@@ -1,0 +1,65 @@
+#login-wrapper {
+  width: 100vw;
+  min-width: 1440px;
+  height: 100vh;
+  min-height: 1024px;
+  display: flex;
+  
+  /* 이미지 넣을 경우 아래는 지우기  */
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-image {
+  width: 40%;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+  background-color: beige;
+  /* background-image: ; */
+}
+.login-container {
+  display: flex;
+  width:60%;
+  /* flex:1; */
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.login-box {
+display: flex;
+flex-direction: column;
+  width: 50%;
+  gap: 24px;
+
+  margin-top: 80px;
+}
+
+.login-title {
+  text-align: center;
+  color: rgba(64, 64, 64, 1);
+
+  font-size: 30;
+  font-weight: 700;
+  line-height: 175%;
+}
+
+.login-content-box {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.login-content-sns-login-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-content-sns-login-title {
+  color: rgba(138, 146, 166, 1);
+  margin-bottom:5px;
+}
+.login-content-sns-login-button-box {
+  display: flex;
+  gap: 5px;
+}

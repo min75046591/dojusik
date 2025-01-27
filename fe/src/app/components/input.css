@@ -1,0 +1,102 @@
+
+/* https://www.youtube.com/watch?v=zdgdJaL5QMM&t=156s */
+.input-box{
+ display: flex;
+ flex-direction: column;
+
+ gap: 10px;
+}
+
+.input-box-title{
+    color:rgba(138,146,166,1);
+    font-size:16px;
+    font-weight: 400;
+    line-height: normal;
+
+    cursor:default; 
+     /* 화살표  */
+}
+
+.input-box-content{
+    display:flex;
+    gap:4px;
+}
+
+.input-box-input{
+    width:100%;
+
+    border: 1px solid rgba(240,240,240,1);
+    border-radius: 6px;
+    padding-left:15px;
+    height: 45px;
+    
+    outline: none;
+    background-color: rgba(255,255,255,1);
+}
+
+.input-box-input::placeholder {
+    color: rgba(138,146,166,1);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 175%;
+}
+
+.input-box-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 6px;
+    width:130px;
+    /* height: 44px; */
+
+    background-color: rgba(58,87,232,0.2);
+
+    color: rgba(45,66,178,1);
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 175%;
+
+    cursor: pointer;
+}
+
+.input-box-button:hover{
+    background-color: rgba(58,87,232,0.4);
+}
+
+.input-box-button-disable {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 6px;
+    width:130px;
+    /* height: 44px; */
+
+    background-color: rgba(240,240,240,1);
+
+    color: rgba(138,146,166,1);
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 175%;
+
+    cursor: default;
+}
+
+.input-box-message{
+    color: rgba(58,87,232,1);
+
+    font-size: 13px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.input-box-message-error{
+    color: rgba(255,84,64,1);
+
+    font-size: 13px;
+    font-weight: 400;
+    line-height: normal;
+}
