@@ -7,7 +7,7 @@
 
 // 라우팅 url은 app 의 하위 폴더 이름으로 매핑되며, 최하단 tsx이름은 무조건 page.tsx여야함 
 
-import '../../styles/globals.css';
+import '../styles/globals.css';
 import React,{} from 'react';
 
 export default function RootLayout({
