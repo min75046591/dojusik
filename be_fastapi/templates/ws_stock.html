@@ -44,13 +44,13 @@
 	//var stockcode4="";
 	
 	/* appkey 입력 변수 */
-	var g_app_key="";
+	var g_app_key="PSLyctq5QAvXgFfX2wuZMFXuScSmt11MP3Rn";
 
 	/* 개인용 appsecret 입력 변수 */
-	var g_appsecret="";	//테스트후삭제
+	var g_appsecret="ZJ3fNakgtnErXKt24LHiWSVoRM5/T/WfIjnTWZSbwkj6LRfY4UTYNhzG6RILlzNbydQj6NJGlTAqNGqvtIWEWhqn9nUQPBd3nOdTYhtWEPoD6Z6T5GDfYE6Tz3LZOHuY+XJCr/jiQlagqUSqgRkY8LAmvXnRLSY1RoEGjplikK+ukcN31wo=";	//테스트후삭제
 
 	/* 개인용 approval_key 입력 변수 */
-	var g_approval_key="";	//테스트후삭제
+	var g_approval_key="91a77287-e18c-43ed-86cb-4c48faa625ea";	//테스트후삭제
 	
 	var ping=0;
 	var pingpong=0;	// pingpong count
@@ -221,8 +221,7 @@
 	w.onmessage = function(e) {
 		// unicode 처리
 		var recvdata = filterUnicode(e.data);
-		console.log('########################');
-		console.log(recvdata);
+		// console.log(recvdata);
 	
 		// 첫데이터가 0이나 1일경우 수신된 실시간 데이터 이므로 다음 단계를 통해 처리한다.
 		if (recvdata[0] == 0|| recvdata[0] == 1)
