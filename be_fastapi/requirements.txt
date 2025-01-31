@@ -1,16 +1,18 @@
 annotated-types @ file:///home/conda/feedstock_root/build_artifacts/annotated-types_1733247046149/work
 anyio @ file:///C:/b/abs_31grv7a7bl/croot/anyio_1729121290992/work
-certifi==2024.12.14
+certifi @ file:///C:/b/abs_59o0xj7aav/croot/certifi_1734473304008/work/certifi
 charset-normalizer==3.4.1
 click @ file:///C:/b/abs_f9ihnt72pu/croot/click_1698129847492/work
 colorama @ file:///C:/b/abs_a9ozq0l032/croot/colorama_1672387194846/work
 exceptiongroup @ file:///C:/b/abs_c5h1o1_b5b/croot/exceptiongroup_1706031441653/work
 fastapi @ file:///C:/b/abs_96d9k5nptn/croot/fastapi_1724789169469/work
 h11 @ file:///C:/b/abs_1czwoyexjf/croot/h11_1706652332846/work
+httpcore @ file:///C:/b/abs_55n7g233bw/croot/httpcore_1706728507241/work
+httpx @ file:///C:/b/abs_43e135shby/croot/httpx_1723474830126/work
 idna @ file:///C:/b/abs_aad84bnnw5/croot/idna_1714398896795/work
 Jinja2 @ file:///C:/b/abs_ddyeze2h6_/croot/jinja2_1730903330414/work
 MarkupSafe @ file:///C:/b/abs_a9k8j__c_q/croot/markupsafe_1736370039866/work
-pycryptodome==3.21.0
+pycryptodome @ file:///C:/b/abs_79emxjlcaj/croot/pycryptodome_1737042221951/work
 pydantic @ file:///home/conda/feedstock_root/build_artifacts/pydantic_1736458246045/work
 pydantic_core @ file:///D:/bld/pydantic-core_1734571316527/work
 PyYAML==6.0.2
