@@ -1,13 +1,14 @@
 package com.example.dojusik.filter;
 
 import com.example.dojusik.config.JwtProvider;
-import com.example.dojusik.auth.entity.UserEntity;
-import com.example.dojusik.auth.respository.UserRepository;
+import com.example.dojusik.api.auth.entity.UserEntity;
+import com.example.dojusik.api.auth.repository.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.User;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
@@ -23,6 +24,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+
 
 @Component
 @RequiredArgsConstructor
@@ -40,16 +43,17 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 return;
             }
             String accId = jwtProvider.validate(token);
-            if (accId ==null){
-                filterChain.doFilter(request, response);
+            if (accId == null) {
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                response.getWriter().write("{\"error\": \"Invalid JWT token.\"}");
                 return;
             }
-            Optional<UserEntity> optionalUser = userRepository.findById(accId);
-            UserEntity user = null;
-            if (optionalUser.isEmpty()){
+            UserEntity user = userRepository.findByAccId(accId);
+            if (user == null) {
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                response.getWriter().write("{\"error\": \"User not found.\"}");
                 return;
             }
-            user = optionalUser.get();
             String role = user.getRole();
 
             // role: ROLE_USER / ROLE_ADMIN 권한 설정 String 컨벤션
@@ -65,7 +69,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             SecurityContextHolder.setContext(securityContext);
 
         }catch (Exception e){
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            response.getWriter().write("{\"error\": \"An error occurred during authentication.\"}");
             e.printStackTrace();
+            return;
+
         }
         filterChain.doFilter(request,response);
     }
@@ -82,5 +90,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String token = authorization.substring(7);
         return token;
 
+    }
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        String path = request.getRequestURI();
+        return path.startsWith("/api/auth");
     }
 }

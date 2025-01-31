@@ -1,8 +1,9 @@
-package com.example.dojusik.auth.controller;
+package com.example.dojusik.api.auth.controller;
 
-import com.example.dojusik.auth.dto.request.LoginRequestDto;
-import com.example.dojusik.auth.dto.request.SignupRequestDto;
-import com.example.dojusik.auth.service.AuthService;
+import com.example.dojusik.api.auth.dto.request.EmailCertificationRequestDto;
+import com.example.dojusik.api.auth.dto.request.LoginRequestDto;
+import com.example.dojusik.api.auth.dto.request.SignupRequestDto;
+import com.example.dojusik.api.auth.service.AuthService;
 import com.example.dojusik.common.ResponseDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -35,4 +36,11 @@ public class AuthController {
         return response;
     }
 
+    @PostMapping("email-certification")
+    public ResponseEntity<ResponseDto> emailCertification (
+            @RequestBody @Valid EmailCertificationRequestDto requestBody
+    ){
+        ResponseEntity<ResponseDto> response = authService.emailCertification(requestBody);
+        return response;
+    }
 }

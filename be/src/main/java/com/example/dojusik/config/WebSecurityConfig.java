@@ -42,7 +42,7 @@ public class WebSecurityConfig {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .authorizeHttpRequests(request -> request
-                                .requestMatchers("/", "api/auth/**").permitAll()
+                                .requestMatchers("/", "/api/auth/**").permitAll()
                                 // user role을 가진 사용자만 접근 가능하게 제한 가능, 접두사 제외
 //              .requestMatchers("/api/user/**").hasRole("USER")
 //              .requestMatchers("/api/user/**").hasRole("ADMIN")

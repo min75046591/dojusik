@@ -1,4 +1,4 @@
-package com.example.dojusik.auth.dto.request;
+package com.example.dojusik.api.auth.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;

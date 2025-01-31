@@ -1,6 +1,6 @@
-package com.example.dojusik.auth.entity;
+package com.example.dojusik.api.auth.entity;
 
-import com.example.dojusik.auth.dto.request.SignupRequestDto;
+import com.example.dojusik.api.auth.dto.request.SignupRequestDto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Getter
@@ -47,6 +48,31 @@ public class UserEntity {
         public UserEntity(SignupRequestDto dto){
                 this.accId = dto.getAccId();
                 this.accPassword = dto.getAccPassword();
+        }
+
+
+        public void recharge(long cash) {
+                this.cash = this.cash + cash;
+        }
+
+        public void withdraw(long cash) {
+                this.cash = this.cash - cash;
+        }
+
+        public UserEntity updateCash(int quantity, BigDecimal pricePerUnit, String type) {
+                BigDecimal totalAmount = pricePerUnit.multiply(BigDecimal.valueOf(quantity));
+                if (type=="sell") {
+                        // long으로 변환하기 전에 값 검증 (BigDecimal의 범위를 초과하지 않는지 확인)
+                        if (totalAmount.compareTo(BigDecimal.valueOf(Long.MAX_VALUE)) > 0) {
+                                throw new ArithmeticException("계산 가능한 범위를 벗어납니다");
+                        }
+                        long totalAmountLong = totalAmount.longValue();
+                        this.cash += totalAmountLong;
+                }
+//                else if (type=="buy") {
+
+//                }
+                return this;
         }
 }
 
