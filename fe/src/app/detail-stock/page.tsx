@@ -6,4 +6,4 @@ export default function DetailStockPage() {
           <DetailStock/>
         </div>
     )
-}
+}0.
