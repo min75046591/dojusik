@@ -8,9 +8,9 @@ import React, {
   useState,
 } from "react";
 import { useRouter } from "next/navigation";
-import routes from "../../routes";
+import routes from "../../../app/routes";
 import InputBox from "@components/Input";
-import { login } from "../../api/auth";
+import { login } from "../../../app/api/auth";
 
 export default function Login() {
   const router = useRouter();

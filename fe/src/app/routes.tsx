@@ -6,8 +6,8 @@ type RouteType = {
 
 const routes: RouteType = {
   home: "/",
-  signup: "/auth/signup",
-  login: "/auth/login",
+  signup: "/signup",
+  login: "/login",
 };
 
 export default routes;
