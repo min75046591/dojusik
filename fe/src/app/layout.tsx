@@ -13,7 +13,7 @@ export default function RootLayout({
       </head>
       <body>
         <header>
-          <h1>두주식</h1>
+          <h1>header</h1>
         </header>
         <main>{children}</main>
         <footer>
