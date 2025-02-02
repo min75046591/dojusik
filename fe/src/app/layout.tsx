@@ -1,4 +1,4 @@
-// import './globals.css';
+// import './page.module.css'
 import '../styles/globals.css'
 export default function RootLayout({
   children,
@@ -13,11 +13,11 @@ export default function RootLayout({
       </head>
       <body>
         <header>
-          <h1>header</h1>
+          {/* <h1>header</h1> */}
         </header>
         <main>{children}</main>
         <footer>
-          <p>Footer</p>
+          {/* <p>Footer</p> */}
         </footer>
       </body>
     </html>

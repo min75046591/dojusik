@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import routes from "../../../app/routes";
 import InputBox from "@components/Input";
 import { login } from "../../../app/api/auth";
+import Svg from "../../../../public/assets/icon/Ellipse";
 
 export default function Login() {
   const router = useRouter();
@@ -82,7 +83,7 @@ export default function Login() {
   };
 
   return (
-    <div id="login-wrapper">
+    <div className="global-container-style">
       {/* <div className="login-image"></div> */}
       <div className="login-container">
         <div className="login-box">

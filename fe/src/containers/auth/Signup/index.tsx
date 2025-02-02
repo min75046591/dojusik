@@ -145,7 +145,7 @@ export default function Signup() {
   };
 
   return (
-    <div id="signup-wrapper">
+    <div className="global-container-style">
       {/* <div className="signup-image"></div> */}
       <div className="signup-container">
         <div className="signup-box">
