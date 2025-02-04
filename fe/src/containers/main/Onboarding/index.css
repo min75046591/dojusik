@@ -81,7 +81,7 @@ line-height: 150%; /* 21px */
   display: flex;
   justify-content: center;
 
-  margin-top:30px;
+  margin:30px;
   gap: 5px;
 }
 

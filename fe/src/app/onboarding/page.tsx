@@ -1,8 +1,8 @@
 import React from 'react'
-import Main from '@containers/main/Onboarding'
+import Onboarding from '@containers/main/Onboarding'
 
 export default function page() {
   return (
-    <Main/>
+    <Onboarding/>
   )
 }
