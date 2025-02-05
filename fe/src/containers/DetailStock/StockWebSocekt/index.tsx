@@ -5,7 +5,7 @@ import CryptoJS from 'crypto-js';
 
 const StockWebSocket: React.FC = () => {
   // 상태값
-  const [approvalKey, setApprovalKey] = useState<string>('');
+  const [approvalKey, setApprovalKey] = useState<string>('81187018-bae3-43f1-81c1-786072846704');
   const [command, setCommand] = useState<string>('1');
   const [logs, setLogs] = useState<string[]>([]);
   const [aesKey, setAesKey] = useState<string>('');
