@@ -6,8 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+
 import java.security.*;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
@@ -23,7 +22,7 @@ public class JwtProvider {
 
 
 //   스프링 세큐리티에서 privateKey, publicKey, keyFactory 모듈제공
-
+    @PostConstruct
     public void init() {
         try {
             InputStream publicInputStream = getClass().getClassLoader().getResourceAsStream("public_key.pem");
@@ -79,20 +78,21 @@ public class JwtProvider {
                     .getPayload();
 
             if (claims.getExpiration().before(new Date())) {
-                System.err.println("JWT expired");
-                return null;  // 만료된 토큰은 null 반환
+                throw new JwtException("JWT expired");
+//                System.err.println("JWT expired");
+//                return null;  // 만료된 토큰은 null 반환
             }
             // 필수 클레임(예: subject)가 존재하는지 확인
             String subject = claims.getSubject();
             if (subject == null) {
-                System.err.println("Subject(accId) is missing");
-                return null;  // subject가 없으면 null 반환
+                throw new JwtException("JWT subject does not exist");
+//                System.err.println("Subject(accId) is missing");
+//                return null;  // subject가 없으면 null 반환
             }
             return subject;
 
         } catch (Exception e) {
-            System.err.println("JWT validation error: " + e.getMessage());
-            return null;
+            throw new JwtException("Invalid JWT", e); // 모든 예외를 JwtException으로 변환
         }
     }
 }
