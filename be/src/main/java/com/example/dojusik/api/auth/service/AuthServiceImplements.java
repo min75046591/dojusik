@@ -90,8 +90,8 @@ public class AuthServiceImplements implements AuthService{
 
             // 인증번호 랜덤 4자리로만 되어있음
             String certificationNumber = CertificationNumber.getCertificationNumber();
-            boolean isSuccessed = emailProvider.sendCertificationMail(email,certificationNumber);
-            if (!isSuccessed) return ResponseDto.error(HttpStatus.INTERNAL_SERVER_ERROR,"메일이 정상적으로 발송되지 않았습니다");
+            boolean isSucceed = emailProvider.sendCertificationMail(email,certificationNumber);
+            if (!isSucceed) return ResponseDto.error(HttpStatus.INTERNAL_SERVER_ERROR,"메일이 정상적으로 발송되지 않았습니다");
 
             CertificationEntity certificationEntity = new CertificationEntity(email, certificationNumber);
             certificationRepository.save(certificationEntity);
