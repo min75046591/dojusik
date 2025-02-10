@@ -10,7 +10,7 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         grant_type: 'client_credentials',
         appkey: process.env.APP_KEY,
-        secretkey: process.env.APP_SECRET,
+        secretkey: process.env.APP_SECRET_KEY,
       }),
     });
 
