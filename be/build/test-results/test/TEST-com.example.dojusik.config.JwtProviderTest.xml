@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.dojusik.config.JwtProviderTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-02-06T10:06:28" hostname="이유안노트북" time="0.036">
+  <properties/>
+  <testcase name="validate()" classname="com.example.dojusik.config.JwtProviderTest" time="0.033"/>
+  <testcase name="create()" classname="com.example.dojusik.config.JwtProviderTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
