@@ -1,0 +1,101 @@
+/* 
+swipe 스타일
+*/
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.content-box {
+  /* display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  
+  width: 100%; */
+  
+  display: flex;
+  /* flex:1; */
+  width:100%;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-top:150px;
+
+  /* height: 75%; */
+
+  /* background-color: black; */
+}
+
+.text-box {
+    display:flex;
+    flex-direction: column;
+
+    gap:16px;
+    padding:50px;
+}
+
+.title-font{
+color: var(--Greyscale-900, #0D0D12);
+text-align: center;
+/* Heading/H4 */
+font-family: Inter;
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+line-height: 135%; /* 32.4px */
+letter-spacing: -0.3px;
+}
+
+.content-font{
+color: var(--Greyscale-500, #666D80);
+text-align: center;
+/* Body/Medium/Regular */
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; /* 21px */
+}
+
+.button-box {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  margin:30px;
+  gap: 5px;
+}
+
+.image-style {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-box-style {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-button-box{
+    display: flex;
+    gap:5px;
+    justify-content: center;
+    margin-top: 10px;
+}
+.button-able{
+    width: 25px;
+    height: 5px;
+    background-color: rgba(10,186,181,1);
+}
+.button-disable{
+    width: 25px;
+    height: 5px;
+    background-color: rgba(236,239,243,1);
+}

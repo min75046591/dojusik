@@ -1,0 +1,181 @@
+/* 전역 스타일  */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+    display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.global-container-style{
+    display:flex; 
+    flex-direction: column;       
+    flex:1;
+    align-items: center;
+    justify-content:center;
+}
+
+.title-font{
+    font-family: Inter;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -2.5px;
+}
+
+
+/* 컬러 버튼 스몰  */
+.global-primary-button-sm{
+    display: flex;
+    width: 160px;
+    height: 44px;
+    padding: 8px;
+    justify-content: center;
+    align-items: center;
+
+    border-radius:16px;
+    background-color: rgba(10,186,181,1);
+    border: 1px solid rgba(10,186,181,1);
+
+    color: rgba(255,255,255,1);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 175%;
+    
+}
+
+/* 흰배경 버튼 스몰  */
+.global-secondary-button-sm{
+    display: flex;
+    width: 160px;
+    height: 44px;
+    padding: 8px;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 16px;
+    background-color: rgba(255,255,255,1);
+    border: 1px solid rgba(10,186,181,1);
+
+    color: rgba(10,186,181,1);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 175%;
+
+}
+
+/* 버튼 라지  */
+.primary-button-lg{
+    border-radius: 6px;
+    padding: 8px 24px;
+
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(10,186,181,1);
+
+    color: rgba(255,255,255,1);
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 175%;
+
+    cursor: pointer;
+}
+
+.primary-button-lg:hover{
+opacity: 0.95;
+}
+
+.button-lg-diable{
+    border-radius: 6px;
+    padding: 8px 24px;
+
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(138,146,166,1);
+
+    color: rgba(255,255,255,1);
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 175%;
+
+    cursor: default;
+}
+
+.full-width{
+width: 100%;
+}
+
+.link-button-lg{
+    border-radius: 6px;
+    /* border: 0.01px solid rgba(113,113,113,1); */
+    padding: 8px 24px;
+
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    color: rgba(113,113,113,1);
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 175%;
+
+    cursor: pointer;
+}
+
+.link-button-lg:hover{
+    color:rgba(40,40,40,1);
+    background-color:rgba(245, 245, 245, 1);
+}
+
+/* .kakao-login-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+
+    width: 100px;
+    height:40px;
+
+    background-color: rgba(255, 221, 51, 1);
+    cursor:pointer;
+}
+.kakao-login-button p{
+    color: rgba(40,40,40,1);
+}
+.naver-login-button {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 5px;
+    width: 100px;
+    height:40px;
+    
+    background-color: rgba(0, 184, 36, 1);
+
+    cursor:pointer;
+}
+.naver-login-button p {
+    color:white;
+} */
