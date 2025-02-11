@@ -15,7 +15,9 @@ services:
       - mysql-data:/var/lib/mysql  # 데이터가 유지되도록 볼륨 설정
 
   springboot-be:
-    image: springboot-be:latest
+    build:
+      context: ./be
+      dockerfile: Dockerfile
     container_name: springboot-be
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/dojusik
@@ -27,7 +29,10 @@ services:
       - "8080:8080"
     networks:
       - app-network
-
+    restart: always
+    volumes:
+      - ./be:/app/
+    # command: ./gradlew bootRun
 networks:
   app-network:
     driver: bridge
