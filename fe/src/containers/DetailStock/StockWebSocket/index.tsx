@@ -132,71 +132,74 @@ export default function StockWebSocket({ setStockData }: StockWebSocketProps) {
     return JSON.stringify(message)
   }
 
-  const connectWebSocket = (key: string) => {
+  // 📌 수신한 WebSocket 데이터를 StockData[] 형태로 변환하는 함수 추가
+  const parseStockData = (rawData: string): StockData[] => {
+    const parts = rawData.split('|')
+    if (parts.length < 4) return []
+  
+    const stockInfo = parts[3].split('^') // 주식 데이터 분할
+    const currentTime = new Date()
+    const currentMinute = currentTime.toISOString().slice(0, 16) // "YYYY-MM-DD HH:mm" (분 단위 그룹화)
+  
+    const price = parseFloat(stockInfo[3]) // 현재가 가져오기
+  
+    return [{ timestamp: currentMinute, price }]
+  }
+  
+
+  const connectWebSocket = key => {
     if (!key) {
       logMessage('승인키가 없습니다. 먼저 승인키를 요청하세요.')
       return
     }
     const ws = new WebSocket(WS_URL)
     wsRef.current = ws
-
+  
     ws.onopen = () => {
       logMessage('✅ 웹소켓 연결됨')
       const sendData = buildSendData(key, command)
       logMessage('📨 전송 메시지: ' + sendData)
       ws.send(sendData)
     }
-
-    ws.onmessage = (event) => {
-      const data: string = event.data
+  
+    ws.onmessage = event => {
+      const data = event.data
       logMessage('📩 수신 데이터: ' + data)
-
-      // 여기에 주식 정보가 있다고 가정하고, 파싱한 후 부모의 setStockData를 호출
-      // 예시: 데이터가 JSON 형태로 { timestamp: string, price: number }라면...
+  
       try {
-        const jsonData = JSON.parse(data)
-        // 예시: jsonData.stockData를 받아온다고 가정 (실제 데이터 포맷에 맞게 수정)
-        if (jsonData.stockData) {
-          setStockData(prev => [...prev, ...jsonData.stockData])
+        const stockData = parseStockData(data)
+        if (stockData.length > 0) {
+          setStockData(prev => {
+            if (prev.length === 0) return stockData
+  
+            const lastCandle = prev[prev.length - 1] // 마지막 분봉
+            const currentTime = stockData[0].timestamp // 새로 들어온 데이터의 분봉 시간
+  
+            if (lastCandle.timestamp === currentTime) {
+              // 🔹 현재 분봉의 가격 업데이트 (현재가 변동 반영)
+              return prev.map(candle =>
+                candle.timestamp === currentTime ? { ...candle, price: stockData[0].price } : candle
+              )
+            } else {
+              // 🔹 1분이 지나면 새로운 분봉 추가 (이전 분봉은 고정)
+              return [...prev, stockData[0]].slice(-100)
+            }
+          })
         }
       } catch (error) {
-        // 기존의 주식호가, 체결 데이터 처리 로직
-        if (data[0] === '0' || data[0] === '1') {
-          const recvArr = data.split('|')
-          const trid0 = recvArr[1]
-          if (data[0] === '0') {
-            if (trid0 === 'H0STASP0') {
-              logMessage('#### 주식호가 ####')
-              // processStockHoka(recvArr[3])
-            } else if (trid0 === 'H0STCNT0') {
-              logMessage('#### 주식체결 ####')
-              const dataCnt = parseInt(recvArr[2])
-              // processStockSpurchase(dataCnt, recvArr[3])
-              // 예시: 주식체결 데이터가 있다면 부모의 setStockData 호출
-              const newStock: StockData = {
-                timestamp: new Date().toISOString(),
-                price: parseFloat(recvArr[3]) // 실제 값 파싱에 맞게 수정
-              }
-              setStockData(prev => [...prev, newStock])
-            }
-          } else if (data[0] === '1') {
-            if (trid0 === 'H0STCNI0' || trid0 === 'H0STCNI9') {
-              logMessage('#### 주식체결통보 ####')
-              // processStockSigningNotice(recvArr[3], aesKey, aesIv)
-            }
-          }
-        }
+        logMessage(`⚠️ 데이터 변환 실패: ${error}`)
       }
     }
-
-    ws.onerror = (event) => {
+  
+    ws.onerror = event => {
       logMessage('⚠️ 웹소켓 오류: ' + event)
     }
-
-    ws.onclose = (event) => {
+  
+    ws.onclose = event => {
       logMessage('❌ 웹소켓 연결 종료됨')
     }
   }
+  
 
   useEffect(() => {
     async function initWebSocket() {
