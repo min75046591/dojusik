@@ -25,27 +25,27 @@ public class MystockController {
         ResponseEntity<ResponseDto> response = mystockService.getMyStock(user);
         return response;
     }
-
-    // 주식 판매
-    @PatchMapping("/sell") // @ResponseBody ResponseDto도 가능
-    public ResponseEntity<ResponseDto> sellStock(
-            @AuthenticationPrincipal UserEntity user,
-            @RequestBody @Valid MystockSellRequestDto requestBody
-            ) {
-        ResponseEntity<ResponseDto> response = mystockService.sellStock(user,requestBody);
-        return response;
-    }
-
-    // 주식 구매
-    @PatchMapping("/buy") // @ResponseBody ResponseDto도 가능
-    public ResponseEntity<ResponseDto> buyStock(
-            @AuthenticationPrincipal UserEntity user,
-            @RequestBody @Valid MystockSellRequestDto requestBody
-    ) {
-        ResponseEntity<ResponseDto> response = mystockService.buyStock(user,requestBody);
-        return response;
-//        return mystockService.buyStock(user,requestBody);
-    }
+//
+//    // 주식 판매
+//    @PatchMapping("/sell") // @ResponseBody ResponseDto도 가능
+//    public ResponseEntity<ResponseDto> sellStock(
+//            @AuthenticationPrincipal UserEntity user,
+//            @RequestBody @Valid MystockSellRequestDto requestBody
+//            ) {
+//        ResponseEntity<ResponseDto> response = mystockService.sellStock(user,requestBody);
+//        return response;
+//    }
+//
+//    // 주식 구매
+//    @PatchMapping("/buy") // @ResponseBody ResponseDto도 가능
+//    public ResponseEntity<ResponseDto> buyStock(
+//            @AuthenticationPrincipal UserEntity user,
+//            @RequestBody @Valid MystockSellRequestDto requestBody
+//    ) {
+//        ResponseEntity<ResponseDto> response = mystockService.buyStock(user,requestBody);
+//        return response;
+////        return mystockService.buyStock(user,requestBody);
+//    }
 
     // 관심 주식 조회
     @GetMapping("/likeStock")
