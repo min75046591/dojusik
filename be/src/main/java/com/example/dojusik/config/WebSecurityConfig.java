@@ -43,11 +43,12 @@ public class WebSecurityConfig {
                 )
                 .authorizeHttpRequests(request -> request
                                 .requestMatchers("/", "/api/auth/**").permitAll()
+                                .requestMatchers("/", "/api/stock/**").permitAll()
+                                .anyRequest().authenticated()
+//                                .anyRequest().permitAll() # jwt 생략하고 코드확인할경우 위에꺼 주석처리하고 이거쓰기
                                 // user role을 가진 사용자만 접근 가능하게 제한 가능, 접두사 제외
 //              .requestMatchers("/api/user/**").hasRole("USER")
 //              .requestMatchers("/api/user/**").hasRole("ADMIN")
-                                .anyRequest().authenticated()
-//                                .anyRequest().permitAll()
                 )
                 .exceptionHandling(exceptionHandling -> exceptionHandling
                         .authenticationEntryPoint(new FailedAuthenticationEntryPoint()))
