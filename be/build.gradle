@@ -45,6 +45,12 @@ dependencies {
 // Oauth
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
+//	dotenv
+	implementation 'io.github.cdimascio:dotenv-java:3.1.0'
+
+// 	http 통신을 위한 webclient
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 }
 
 tasks.named('test') {

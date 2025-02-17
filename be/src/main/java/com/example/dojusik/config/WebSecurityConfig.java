@@ -47,6 +47,7 @@ public class WebSecurityConfig {
 //              .requestMatchers("/api/user/**").hasRole("USER")
 //              .requestMatchers("/api/user/**").hasRole("ADMIN")
                                 .anyRequest().authenticated()
+//                                .anyRequest().permitAll()
                 )
                 .exceptionHandling(exceptionHandling -> exceptionHandling
                         .authenticationEntryPoint(new FailedAuthenticationEntryPoint()))

@@ -7,11 +7,13 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Getter
+@Setter
 @NoArgsConstructor // 매개변수없는 생성자 자동만듦
 @AllArgsConstructor // 모든필드에 생성자 만들어줌
 @Entity(name="users")
@@ -75,4 +77,3 @@ public class UserEntity {
                 return this;
         }
 }
-

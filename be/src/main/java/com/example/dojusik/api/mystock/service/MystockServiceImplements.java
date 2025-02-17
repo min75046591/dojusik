@@ -16,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -29,6 +30,7 @@ public class MystockServiceImplements implements MystockService {
     private final UserStockRepository userStockRepository;
     private final TradeStockHistoryRepository tradeStockHistoryRepository;
     private final LikeStockRepository likeStockRepository;
+//    private final StockTradeApiClient stockTradeApiClient;
 
     @Override
     public ResponseEntity<ResponseDto> getMyStock(UserEntity user)
@@ -44,7 +46,6 @@ public class MystockServiceImplements implements MystockService {
 
     @Override
     public ResponseEntity<ResponseDto> sellStock(UserEntity user, MystockSellRequestDto dto) {
-//        return null;
         try{
             UserStockEntity userStock = userStockRepository.findByUserIdAndTicker(user.getId(),dto.getTicker());
             if(userStock ==null) return ResponseDto.error(HttpStatus.BAD_REQUEST, "해당 주식을 보유하고 있지 않습니다");
@@ -75,6 +76,13 @@ public class MystockServiceImplements implements MystockService {
             e.printStackTrace();
             return ResponseDto.serverError();
         }
+    }
+
+    @Override
+    public ResponseEntity<ResponseDto> buyStock(UserEntity user, MystockSellRequestDto dto) {
+        return ResponseDto.success("주식 구매 내역", "example");
+//        return stockTradeApiClient.fetchBuyData(user, dto)
+//                .map(response -> ResponseDto.success("검색", response));
     }
 
     @Override

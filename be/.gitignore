@@ -38,3 +38,6 @@ out/
 
 ### 키 정보 ##
 .pem
+
+### appkey 들어있는 .env ###
+.env

@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/api/mystock")
@@ -33,6 +34,17 @@ public class MystockController {
             ) {
         ResponseEntity<ResponseDto> response = mystockService.sellStock(user,requestBody);
         return response;
+    }
+
+    // 주식 구매
+    @PatchMapping("/buy") // @ResponseBody ResponseDto도 가능
+    public ResponseEntity<ResponseDto> buyStock(
+            @AuthenticationPrincipal UserEntity user,
+            @RequestBody @Valid MystockSellRequestDto requestBody
+    ) {
+        ResponseEntity<ResponseDto> response = mystockService.buyStock(user,requestBody);
+        return response;
+//        return mystockService.buyStock(user,requestBody);
     }
 
     // 관심 주식 조회

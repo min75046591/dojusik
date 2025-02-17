@@ -4,10 +4,13 @@ import com.example.dojusik.api.auth.entity.UserEntity;
 import com.example.dojusik.api.mystock.dto.request.MystockSellRequestDto;
 import com.example.dojusik.common.ResponseDto;
 import org.springframework.http.ResponseEntity;
+import reactor.core.publisher.Mono;
 
 public interface MystockService {
     ResponseEntity<ResponseDto> getMyStock(UserEntity user);
     ResponseEntity<ResponseDto> sellStock(UserEntity user, MystockSellRequestDto dto);
+//    Mono<ResponseEntity<ResponseDto>> buyStock(UserEntity user, MystockSellRequestDto dto);
+    ResponseEntity<ResponseDto> buyStock(UserEntity user, MystockSellRequestDto dto);
     ResponseEntity<ResponseDto> getLikeStocks(UserEntity user);
     ResponseEntity<ResponseDto> setLikeStock(UserEntity user, String ticker);
 }
