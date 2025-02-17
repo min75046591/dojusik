@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/stock")
+@RequestMapping("/api/stock")
 @RequiredArgsConstructor
 public class StockController {
 
